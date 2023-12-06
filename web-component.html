@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Component Example</title>
+</head>
+<body>
+
+<!-- Web Component -->
+<my-custom-element></my-custom-element>
+
+<script>
+    // Definition of the web component class
+    class MyCustomElement extends HTMLElement {
+        constructor() {
+            super();
+
+            // Create shadow DOM
+            this.attachShadow({ mode: 'open' });
+
+            // Define the content of the component
+            this.shadowRoot.innerHTML = `
+                <style>
+                    /* Styles for the shadow DOM */
+                    :host {
+                        display: block;
+                        padding: 16px;
+                        background-color: #f0f0f0;
+                        border: 1px solid #ccc;
+                    }
+                </style>
+                <p>Hello, I'm a custom web component!</p>
+            `;
+        }
+    }
+
+    // Register the web component
+    customElements.define('my-custom-element', MyCustomElement);
+</script>
+
+</body>
+</html>
